@@ -6,8 +6,8 @@ function removeChar(str){
     return str.slice(1, str.length - 1);
 }
 
-//'Best Practice' solution
+//'Best Practices' solution
 function removeChar(str) {
-    return str.slice(1, -1);                         //can use negative numbers for an index that starts from the other end
+    return str.slice(1, -1);    //can use negative numbers for an index that starts from the other end
 }
 

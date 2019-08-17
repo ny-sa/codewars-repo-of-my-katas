@@ -7,9 +7,9 @@
 //My solution
 function disemvowel(str) {
     return str.replace(/a/gi, '').replace(/e/gi, '').replace(/i/gi, '').replace(/o/gi, '').replace(/u/gi, '');
-}                                                                   //returned a single line of method calls
+}   //returned a single line of method calls
 
-//'Best Practice' solution
+//'Best Practices' solution
 function disemvowel(str) {
-    return str.replace(/[aeiou]/gi, '');                            //looks like I didn't even have to do that
-}                                                                   //RegExp seems very useful, I should look into it more
+    return str.replace(/[aeiou]/gi, '');    //looks like I didn't have to call more than one method
+}                                           //I ought to use RegExp more

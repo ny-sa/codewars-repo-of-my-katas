@@ -2,10 +2,10 @@
 
 //My solution
 function multiply(a, b){
-    return a * b                    //typed in 'return', that's it
+    return a * b    //typed in 'return', that's it
 }
 
-//'Best Practice' solution
+//'Best Practices' solution
 multiply = function (a, b) {
-    return a * b;                   //same here
+    return a * b;   //the same here
 };
