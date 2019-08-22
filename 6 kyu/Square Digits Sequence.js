@@ -5,7 +5,7 @@
 // Given the first element a0, find the length of the sequence.
 
 //My solution
-function squareDigitsSequence(a0) { //no native methods challenge
+function squareDigitsSequence(a0) { //No native methods challenge
     let current = a0, sequence = [a0], sum = 0, keepGoin = true;
     while (keepGoin) {
         for (let i = 0, curStr = '' + current; i < curStr.length; i++)
