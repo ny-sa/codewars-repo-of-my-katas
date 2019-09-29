@@ -14,12 +14,18 @@
 //"aA11" -> 2 # 'a' and '1'
 //"ABBA" -> 2 # 'A' and 'B' each occur twice
 
-function duplicateCount(text){
-    let count = 0, dupe = [], newText = text.toLowerCase()
-                                            .split('')
-                                            .sort();
+//My solution
+function duplicateCount(text) {
+    let dupe = [], newText = text.toLowerCase()                  //turns text to sorted, one-case array that is simpler to check
+                                 .split('')
+                                 .sort();
     for (let i = 0; i < newText.length; i++)
-        if (newText[i + 1] === newText[i] && !dupe.includes(newText[i]))
+        if (newText[i + 1] === newText[i] && !dupe.includes(newText[i]))    //checks for duplicates, that are next to each other
             dupe.push(newText[i]);
     return dupe.length
+}
+
+//'Best Practices' solution
+function duplicateCount(text){  //rejoins back to string, then counts duplicates through the length of regex .match()
+    return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
   }
