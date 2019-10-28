@@ -1,0 +1,32 @@
+//Task
+//Given a string s, find out if its characters can be rearranged to form a palindrome.
+
+//Example
+//For s = "aabb", the output should be true.
+
+//We can rearrange "aabb" to make "abba", which is a palindrome.
+
+//Input/Output
+//[input] string s
+
+//A string consisting of lowercase English letters.
+
+//Constraints:
+
+//4 ≤ inputString.length ≤ 50.
+
+//[output] a boolean value
+
+//true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.
+
+//My solution
+function palindromeRearranging(s) {
+    let letters = {}
+    for (let i = 0; i < s.length; i++) {
+        if (!Object.keys(letters).includes(s[i]))
+            letters[s[i]] = 1;
+        else letters[s[i]] += 1;
+    }
+    return letters;
+}
+console.log(palindromeRearranging('aabcc'));
