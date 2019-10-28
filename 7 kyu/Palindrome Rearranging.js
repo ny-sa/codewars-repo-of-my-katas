@@ -21,12 +21,14 @@
 
 //My solution
 function palindromeRearranging(s) {
-    let letters = {}
+    let letters = {}, oddCount = 0;
     for (let i = 0; i < s.length; i++) {
         if (!Object.keys(letters).includes(s[i]))
             letters[s[i]] = 1;
         else letters[s[i]] += 1;
     }
-    return letters;
+    for (let j in letters)
+        if (letters[j] % 2 === 1)
+            oddCount++;
+    return oddCount < 2;
 }
-console.log(palindromeRearranging('aabcc'));
