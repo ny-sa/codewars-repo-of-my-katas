@@ -13,10 +13,12 @@
 
 //My solution
 function knightVsBishop(knightPosition, bishopPosition) {
-    let xCoord = {  A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8  };
-    if (Math.abs(knightPosition[0] - bishopPosition[0]) + Math.abs(xCoord[knightPosition[1]] - xCoord[bishopPosition[1]]) === 3)
+    let xCoord = {  A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8  },
+    yDiff = Math.abs(knightPosition[0] - bishopPosition[0]),
+    xDiff = Math.abs(xCoord[knightPosition[1]] - xCoord[bishopPosition[1]]);
+    if ( yDiff + xDiff === 3 && (yDiff !== 0 && xDiff !== 0))
         return 'Knight';
-    else if (Math.abs(knightPosition[0] - bishopPosition[0]) === Math.abs(xCoord[knightPosition[1]] - xCoord[bishopPosition[1]]))
+    else if ( yDiff === xDiff)
         return 'Bishop';
     else return 'None';    
 }
