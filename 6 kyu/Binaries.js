@@ -25,3 +25,23 @@
 //Given a string strng resulting from the previous coding, decode it to get the corresponding decimal string.
 
 //My solution
+function code(str) {
+    let bits = { 0:'1', 1:'1', 2:'01', 3:'01', 4:'001', 5:'001', 6:'001', 7:'001', 8:'0001', 9:'0001' },
+        binary = { 0:'0', 1:'1', 2:'10', 3:'11', 4:'100', 5:'101', 6:'110', 7:'111', 8:'1000', 9:'1001' };
+    return str.split('')
+                .map(x => bits[x] + binary[x])
+                .join('');
+}
+
+function decode(str) {
+    let number = '',
+    code = { 0:'10', 1:'11', 2:'0110', 3:'0111', 4:'001100', 5:'001101', 6:'001110', 7:'001111', 8:'00011000', 9:'00011001'};
+    while (str !== '') 
+        for (let digit in code)
+            if (str.substring(0, code[digit].length) === code[digit]) {
+                number += digit;
+                str = str.substring(code[digit].length, str.length);
+                break;
+            }
+    return number;
+}
