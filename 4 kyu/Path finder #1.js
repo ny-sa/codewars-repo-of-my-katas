@@ -20,6 +20,9 @@ function pathFinder(maze) {
     let n = loc.length;
     if (loc[0][0] === 'W' || loc[n - 1][n - 1] === 'W') return false;
     console.log(loc);
-
+    const trial = maze => {
+        
+    }
+    return trial(loc);
 }
 console.log(pathFinder('sWWWWW\n..WWWW\nW..WWW\nWW..WW\nWWW..W\nWWWW.e'))
