@@ -2,7 +2,7 @@
 
 //My solution
 function multiply(a, b){
-    return a * b    //typed in 'return', that's it
+    return a * b
 }
 
 //'Best Practices' solution

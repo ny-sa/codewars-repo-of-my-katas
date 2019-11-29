@@ -10,3 +10,8 @@
 function opposite(number) { //No native methods "challenge"
     return -number;
 }
+
+//'Best Practices' solution
+function opposite(number) {
+    return(-number);    //parenthesis can be used for return statements that need multiple lines
+  }

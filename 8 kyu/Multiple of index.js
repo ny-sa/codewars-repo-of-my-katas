@@ -12,3 +12,8 @@
 function multipleOfIndex(array) {
     return array.filter((a, b) => {return a % b == 0});
 }
+
+//'Best Practices' solution
+function multipleOfIndex(array) {
+    return array.filter((num, i) => num % i === 0); //do not need curly brackets if function consists of a single line return
+  }
