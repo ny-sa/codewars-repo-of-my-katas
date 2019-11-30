@@ -21,7 +21,7 @@ function pathFinder(maze) {
     if (loc[0][0] === 'W' || loc[n - 1][n - 1] === 'W') return false;
     console.log(loc);
     const trial = maze => {
-        
+        //
     }
     return trial(loc);
 }
