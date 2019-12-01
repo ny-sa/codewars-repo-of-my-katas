@@ -19,3 +19,12 @@ function generateRange(min, max, step){
       array.push(i)
     return array;
 }
+
+//'Best Practices' solution
+function generateRange(min, max, step){ //the same implmentation with slightly different formatting
+  let arr = [];
+  for (let i=min; i<=max; i += step) {
+    arr.push(i);
+  }
+  return arr;
+}

@@ -19,3 +19,6 @@ function century(year) {    //No native methods challenge
     for (let i = 0; i < year; i += 100) sum ++;
     return sum;
 }
+
+//Best Practices/ solution
+const century = year => Math.ceil(year/100); //native methods are both easy and quick
