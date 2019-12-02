@@ -16,3 +16,8 @@ function getCount(str) {    //No native methods challenge
     }
     return vowelsCount;
 }
+
+//'Best Practices' solution
+function getCount(str) {
+    return (str.match(/[aeiou]/ig)||[]).length; //filter out consonants with match() and regex, then just take the length
+}
