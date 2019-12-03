@@ -32,3 +32,10 @@ function palindromeRearranging(s) {
             oddCount++;
     return oddCount < 2;
 }
+
+//'Best Practices' solution
+const _ = require('lodash');
+
+function palindromeRearranging(s) {
+  return _(s).countBy().values().map(x => x % 2).sum() <= 1;
+}
