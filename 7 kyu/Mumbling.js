@@ -17,3 +17,8 @@ function accum(s) { //No native methods (other than letter cases) challenge
     }
     return string;
 }
+
+//'Best Practices' solution
+function accum(s) {
+    return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-'); //map() transforms each character
+  }                                                                                            //join() adds the hyphen between
