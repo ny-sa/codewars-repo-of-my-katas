@@ -22,3 +22,22 @@ function knightVsBishop(knightPosition, bishopPosition) {
         return 'Bishop';
     else return 'None';    
 }
+
+//'Best Practices' solution
+function knightVsBishop(np, bp) {
+    np[1] = np[1].charCodeAt(0);                                    //using .charCodeAt() instead of an object to read characters
+    bp[1] = bp[1].charCodeAt(0);
+    
+    var diffx = Math.abs(np[1] - bp[1]);
+    var diffy = Math.abs(np[0] - bp[0]);
+    
+    if (diffx == diffy) {
+      return "Bishop";
+    }
+        
+    if (diffx == 2 && diffy == 1 || diffx == 1 && diffy == 2) {
+      return "Knight";
+    }
+        
+    return "None";
+  }
