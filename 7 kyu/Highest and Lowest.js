@@ -28,3 +28,9 @@ function highAndLow(numbers) { //No native methods challenge
     }
     return `${highest} ${lowest}`;
 }
+
+//'Best Practices' solution
+function highAndLow(numbers){
+    numbers = numbers.split(' ').map(Number);   
+    return Math.max.apply(0, numbers) + ' ' + Math.min.apply(0, numbers);   //method goes through array once to determine specified 
+}                                                                           //value
