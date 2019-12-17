@@ -34,12 +34,11 @@ function allContinents(list) {  //No native methods challenge
             case 'Oceania': truths[4] = true;
         }
     }
-    for (let i in truths) if(truths[i] == false) return false;
+    for (let i in truths) if(truths[i] == false) return false;  //running two loops does not seem to be necessary for this problem
     return true;
 }
 
-console.log(allContinents(  { firstName: 'Fatima', lastName: 'A.', country: 'Algeria', continent: 'Africa', age: 25, language: 'JavaScript' },
-    { firstName: 'Agustín', lastName: 'M.', country: 'Chile', continent: 'Americas', age: 37, language: 'C' },
-    { firstName: 'Jing', lastName: 'X.', country: 'China', continent: 'Asia', age: 39, language: 'Ruby' },
-    { firstName: 'Laia', lastName: 'P.', country: 'Andorra', continent: 'Europe', age: 55, language: 'Ruby' },
-    { firstName: 'Oliver', lastName: 'Q.', country: 'Australia', continent: 'Oceania', age: 65, language: 'PHP' }));
+//'Best Practices' solution
+function allContinents(list) {  //checks if .every element of the array below, matches .some elements, at least one, in list
+    return ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'].every(x => list.some(y => x==y.continent));
+  }
