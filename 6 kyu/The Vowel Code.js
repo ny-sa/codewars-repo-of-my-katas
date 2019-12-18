@@ -50,4 +50,13 @@ function decode(string) {
     return str;
 }
 
-console.log(decode(encode('hello')));
+//'Best Practices' solution
+// turn vowels into numbers
+function encode(string){    //Two methods reduce a whole function down to a single line
+    return string.replace(/[aeiou]/g, function (x) { return '_aeiou'.indexOf(x) });
+}
+  
+  //turn numbers back into vowels
+  function decode(string){
+    return string.replace(/[1-5]/g, function (x) { return '_aeiou'.charAt(x) });
+}
