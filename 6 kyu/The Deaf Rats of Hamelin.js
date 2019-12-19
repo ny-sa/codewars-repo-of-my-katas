@@ -18,7 +18,7 @@
 //My solution
 var countDeafRats = function(town) { //No native methods challenge
     let sum = 0, deaf = 'O~', rat = '';
-    for (let i = 0; i < town.length; i++) {
+    for (let i = 0; i < town.length; i++) { //reads string for '~O' or 'O~' and determines deafness from whether 'P' has been read
         if (town[i] == `~` || town[i] == 'O') rat += town[i];
         if (rat.length == 2) {
             if (rat == deaf) sum++;
@@ -29,4 +29,18 @@ var countDeafRats = function(town) { //No native methods challenge
     return sum;
 }
 
-
+//'Best Practices' solution
+var countDeafRats = function(town) {
+    // Your code here
+    if(town != null){
+      [left,right]=town.split('P'); //reverses right side, derives array of rats with match(), and returns number of rats going left
+          var a=left+right.split('').reverse().join('');    
+          var b=(a.match(/O~|~O/gi)||[]).filter(v=>v=='O~').length;
+           return b;
+    }
+    return 0;
+    
+          
+          
+         
+  }
