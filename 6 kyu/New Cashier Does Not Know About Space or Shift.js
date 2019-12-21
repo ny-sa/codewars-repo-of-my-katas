@@ -34,3 +34,23 @@ function getOrder(input) {
                 ledgible += menu[chars] + ' '; 
     return ledgible.trim();
 }
+
+//'Best Practices' solution
+const MENU = {
+    Burger:     1,
+    Fries:      2,
+    Chicken:    3,
+    Pizza:      4,
+    Sandwich:   5,
+    Onionrings: 6,
+    Milkshake:  7,
+    Coke:       8,
+  };
+  const REG_CMD = new RegExp(Object.keys(MENU).join('|'), 'gi');
+  
+  function getOrder(cmd) {
+    return cmd.match(REG_CMD)
+              .map(s=>s.charAt(0).toUpperCase()+s.slice(1))
+              .sort((x,y)=>MENU[x]-MENU[y])
+              .join(' ');
+  }

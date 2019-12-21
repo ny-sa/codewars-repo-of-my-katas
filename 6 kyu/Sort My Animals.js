@@ -9,6 +9,7 @@
 //
 // If null is passed, the method should return null. If an empty list is passed, it should return an empty list back.
 
+//My solution
 function sortAnimal(animal) { //No native methods challenge
     if (animal == null) return null;
     let temp;
@@ -23,3 +24,10 @@ function sortAnimal(animal) { //No native methods challenge
             }
     return animal;
 }
+
+//'Best Practices' solution
+const compareAnimals = (a, b) =>    //abstract multiple conditions into a single function
+  a.numberOfLegs - b.numberOfLegs || a.name.localeCompare(b.name)
+  
+const sortAnimal = animals =>
+  animals ? animals.slice().sort(compareAnimals) : null //checking for null on a separate statement is not necessary

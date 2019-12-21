@@ -19,3 +19,13 @@ function squareDigitsSequence(a0) { //No native methods challenge
     }
     return sequence.length;
 }
+
+//'Best Practices' solution
+function squareDigitsSequence(n) {
+    var s = new Set();
+    while (!s.has(n)) { //the condition only sees the original parameter
+        s.add(n);
+        n = +[...''+n].reduce((n,d) => n+d*d,0);
+    }
+    return s.size+1;
+}
