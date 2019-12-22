@@ -29,15 +29,15 @@ function getOrder(input) {
     let ledgible = '', menu = { burg:'Burger', frie:'Fries', chic:'Chicken', pizz:'Pizza', sand:'Sandwich', onio:'Onionrings', milk:'Milkshake' ,
         coke:'Coke' };
     for (let chars in menu)
-        for (let i = 0; i < input.length; i++)
-            if (input.substring(i, i + 4) === chars)
+        for (let i = 0; i < input.length; i++)  //should be i < input.length - 4 instead
+            if (input.substring(i, i + 4) === chars)    //add item when the 4-char string matches the selected key 'chars'
                 ledgible += menu[chars] + ' '; 
     return ledgible.trim();
 }
 
 //'Best Practices' solution
 const MENU = {
-    Burger:     1,
+    Burger:     1, 
     Fries:      2,
     Chicken:    3,
     Pizza:      4,
@@ -48,7 +48,7 @@ const MENU = {
   };
   const REG_CMD = new RegExp(Object.keys(MENU).join('|'), 'gi');
   
-  function getOrder(cmd) {
+  function getOrder(cmd) {  //regex match with MENU, map to first char capitalized, sort to order in MENU, join into string
     return cmd.match(REG_CMD)
               .map(s=>s.charAt(0).toUpperCase()+s.slice(1))
               .sort((x,y)=>MENU[x]-MENU[y])
