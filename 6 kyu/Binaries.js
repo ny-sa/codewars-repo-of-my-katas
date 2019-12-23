@@ -45,3 +45,23 @@ function decode(str) {
             }
     return number;
 }
+
+//'Best practices' solution
+function code(strng) {
+    return strng.split('').map(function (n) { 
+      var str = '1' + Number(n).toString(2);
+      while (n>>=1 != 0) str = '0' + str;
+      return str;
+    }).join('');
+    
+}
+function decode(str) {
+    var regex, matches, strng;
+    regex = /0*1/g;
+    strng = '';
+    while (matches = regex.exec(str)) {
+      strng += parseInt(str.substr(regex.lastIndex, matches[0].length), 2);
+      regex.lastIndex += matches[0].length;
+    }
+    return strng;
+}

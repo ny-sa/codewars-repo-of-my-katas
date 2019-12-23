@@ -22,3 +22,15 @@ function combine(...arrays) {   //No native methods challenge
                 arr[arr.length] = arrays[i][j];
     return arr;
 }
+
+//'Best practices' solution
+function combine(...arrs) {
+    var max = arrs.reduce((n, arr) => Math.max(n, arr.length), 0)
+    var res = []
+    for (var i = 0; i < max; i++) {
+      for (var arr of arrs) {
+        if (i in arr) res.push(arr[i])
+      }
+    }
+    return res
+  }

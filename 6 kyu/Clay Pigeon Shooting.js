@@ -26,7 +26,19 @@ function shoot(x) { //No native method challenge
         for (let player in x[game][0])
             for (let char in x[game][0][player])
                 if (x[game][0][player][char] == 'X')
-                    (player == 'P1') ? P1 += 2 ** x[game][1] : P2 += 2 ** x[game][1];
+                    (player == 'P1') ? P1 += 2 ** x[game][1] : P2 += 2 ** x[game][1];   //True/False becomes 1/0, so 2^1=2 and 2^0=1
     if (P1 == P2) return 'Draw!';
     return (P1 > P2) ? 'Pete Wins!' : 'Phil Wins!';
+}
+
+//'Best practices' solution
+function shoot(x) {
+    let [pete, phil] = x.reduce((result, [{P1, P2}, doublePoints]) => {
+        result[0] += (P1.match(/X/g) || []).length * (doublePoints? 2: 1);  //? is clearer than casting booleans as numbers
+        result[1] += (P2.match(/X/g) || []).length * (doublePoints? 2: 1);
+        return result;
+    }, [0, 0]);
+    return pete > phil? 'Pete Wins!':
+           phil > pete? 'Phil Wins!':
+          'Draw!';
 }

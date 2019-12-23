@@ -20,7 +20,7 @@
 
 //My solution
 decodeMorse = function(morseCode) { //No native methods challenge
-    let morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', //not the whole table, only for the test cases
+    let morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
         '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-',
         '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '.-.-.-','-.-.--'];
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ.!';
@@ -35,12 +35,12 @@ decodeMorse = function(morseCode) { //No native methods challenge
                     decoded += ' ';
                 }
                 spaceCount = 0;
-            }
+            }                                       
         }
         if (morseCode[i] == ' ' && canSpace) {
             spaceCount++;
             if (morseCode[i - 1] != ' ') {
-                if (decoder == SOS) {
+                if (decoder == SOS) {   //solution is tailored for the problem and not as a stand-alone decoder
                     decoded += 'SOS';
                     decoder = '';
                 }
@@ -68,10 +68,10 @@ decodeMorse = function(morseCode) { //No native methods challenge
 //'Best practices' solution
 decodeMorse = function(morseCode){
     function decodeMorseLetter(letter) {
-      return MORSE_CODE[letter];
+      return MORSE_CODE[letter];    //use the dictionary already inside the environment
     }
     function decodeMorseWord(word) {
       return word.split(' ').map(decodeMorseLetter).join('');
     }
     return morseCode.trim().split('   ').map(decodeMorseWord).join(' ');
-  }
+}
