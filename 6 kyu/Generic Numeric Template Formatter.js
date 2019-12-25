@@ -26,3 +26,7 @@ function numericFormatter(template, number = '1234567890') {
     }
     return formatted;
 }
+
+//'Best practices' solution
+const numericFormatter = (template, str = '1234567890', i = 0) =>
+  template.replace(/[a-z]/gi, () => str[i++ % str.length])  //replace characters found in the regex with an ascending element of str

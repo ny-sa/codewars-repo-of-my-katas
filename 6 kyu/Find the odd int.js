@@ -16,3 +16,6 @@ function findOdd(A) { //No native methods challenge
     }
     for (let k in count) { if (count[k] % 2 === 1) return k * 1; }
 }
+
+//'Best practices' solution
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b); //I forget that the caret in JS does not exponentiate, but acts as XOR
