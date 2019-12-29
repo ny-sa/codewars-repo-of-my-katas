@@ -46,7 +46,7 @@ function genRange(arr, letter, start, end, count) {
     var taken = [];
     for(var i = 0; i < count; ) {
       r = Math.floor(Math.random() * (end - start) + start);
-      if(taken.indexOf(r) == -1) {
+      if(taken.indexOf(r) == -1) {  //indexOf() returns -1 on non-existent elements
         taken.push(r);
         arr.push(letter + r);
         i++;
@@ -55,7 +55,7 @@ function genRange(arr, letter, start, end, count) {
   }
   function getCard()
   {
-    var arr = [];
+    var arr = [];                   //more elegant and scalable when the implementation is a separate function with inputs
     genRange(arr, "B", 1, 15, 5);
     genRange(arr, "I", 16, 30, 5);
     genRange(arr, "N", 31, 45, 4);
