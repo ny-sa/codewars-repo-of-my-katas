@@ -25,7 +25,7 @@ function combine(...arrays) {   //No native methods challenge
 
 //'Best practices' solution
 function combine(...arrs) {
-    var max = arrs.reduce((n, arr) => Math.max(n, arr.length), 0)
+    var max = arrs.reduce((n, arr) => Math.max(n, arr.length), 0) //determine length of largest array
     var res = []
     for (var i = 0; i < max; i++) {
       for (var arr of arrs) {

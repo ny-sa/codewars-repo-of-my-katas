@@ -49,7 +49,7 @@ function decode(str) {
 //'Best practices' solution
 function code(strng) {
     return strng.split('').map(function (n) { 
-      var str = '1' + Number(n).toString(2);
+      var str = '1' + Number(n).toString(2);    //parameter for toString(n) represents a base-n numeral system
       while (n>>=1 != 0) str = '0' + str;
       return str;
     }).join('');
