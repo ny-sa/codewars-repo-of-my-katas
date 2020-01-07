@@ -56,7 +56,7 @@ function gap(g, m, n) {
     
     for(var i = m; i <= n; i++)
         if(isPrime(i)) {
-            if(i - lastPrime == g) return [lastPrime, i];
+            if(i - lastPrime == g) return [lastPrime, i];   //not necessary to initialize array at beginning of function
             else lastPrime = i;
         }
       
