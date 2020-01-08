@@ -18,7 +18,7 @@
 function solequa(n) {                                                               
     let array = [];
     for (let a = 1; a <= n**.5; a++)
-        if (Number.isInteger(n/a))
+        if (Number.isInteger(n/a))  //would have been better to put all conditions into one if statement
             if (Number.isInteger((n/a + a)/2) && Number.isInteger((n/a - a)/4))
                 array.push([(n/a + a)/2, (n/a - a)/4]);
     return array;
@@ -34,7 +34,7 @@ function solequa(n) {
 //'Best practices' solution
 function solequa(n) {
     let result = []
-    for ( let d, x, y, i=1; i <= Math.sqrt(n); i++ ) {
+    for ( let d, x, y, i=1; i <= Math.sqrt(n); i++ ) { // simplified expressions with more variables
       if ( Number.isInteger( d = n/i ) && Number.isInteger( x = (d+i)/2) && Number.isInteger( y = (d-i)/4)) {
         result.push([x,y]);
       }
