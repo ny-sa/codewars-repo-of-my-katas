@@ -63,7 +63,7 @@ function getPINs(observed) {
 
 //'Best Practice' solution
 function getPINs(observed) {
-    var adjacent = [    //initializes similar double array
+    var adjacent = [   
         /* 0 */ [0, 8],
         /* 1 */ [1, 2, 4],
         /* 2 */ [1, 2, 3, 5],
@@ -78,12 +78,12 @@ function getPINs(observed) {
 
     return observed
         .split('')  //split string to char array
-        .map(function(d) { return adjacent[d|0]; }) //...turn each char element into adjacent array
-        .reduce(function(pa, da) {    //...reduce between previous and current array,
-            return da.reduce(function(pv, d) {  //...reduce between previous and current value of current array
-                return pv.concat(pa.map(function(p) {   //..concatenate previous value with mapped previous array
-                    return '' + p + d;  //..where each value of the previous array is concatenated with the current value
+        .map(function(d) { return adjacent[d|0]; })
+        .reduce(function(pa, da) {   
+            return da.reduce(function(pv, d) { 
+                return pv.concat(pa.map(function(p) { 
+                    return '' + p + d; 
                 }));
             }, []);
-        }, ['']);   //...going to take a while to wrap my head around
+        }, ['']);  
 }
