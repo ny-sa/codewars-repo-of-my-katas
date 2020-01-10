@@ -14,15 +14,47 @@ function pathFinder(maze) {
             i++;
         }
     }
-    for (let l of loc) {
+    for (let l of loc)
         if (loc.length !== l.length) return false;
-    }
     let n = loc.length;
     if (loc[0][0] === 'W' || loc[n - 1][n - 1] === 'W') return false;
     console.log(loc);
     const trial = maze => {
-        //
+        const spot = coOrd => { return maze[coOrd[1]][coOrd[0]]; }; //coOrd being a coordinate where y-axis goes down
+        const east = () => [current[0]+1, current[1]]; const south = () => [current[0], current[1]+1];
+        const west = () => [current[0]-1, current[1]]; const north = () => [current[0], current[1]-1];
+        let current = [0, 0], choices = [], passed = [], alternate = [];
+        while (true) {
+            if (east()[0] < maze.length && spot(east()) !== 'W' && !passed.some(i => i.toString() === east().toString()))
+                choices.push(east());
+            if (south()[1] < maze.length && spot(south()) !== 'W' && !passed.some(i => i.toString() === south().toString())) 
+                choices.push(south());
+            if (west()[0] >= 0 && spot(west()) !== 'W' && !passed.some(i => i.toString() === west().toString())) 
+                choices.push(west());
+            if (north()[1] >= 0 && spot(north()) !== 'W' && !passed.some(i => i.toString() === north().toString())) 
+                choices.push(north());
+            if (choices.length > 0) {
+                if (spot(choices[0]) === 'e') return true;
+                else {
+                    passed.push(current);
+                    current = choices[0];
+                    for (let i = 1; i < choices.length; i++) 
+                        alternate.push(choices[i]);
+                    choices = [];
+                }
+            }
+            else if (alternate.length > 0) current = alternate.pop();
+            else return false;
+        }
     }
     return trial(loc);
 }
-console.log(pathFinder('sWWWWW\n..WWWW\nW..WWW\nWW..WW\nWWW..W\nWWWW.e'))
+
+console.log(pathFinder('s.....\n......\n......\n......\n.....W\n....We'))
+/* recursive takes too long, so iterative should be the way
+the win condition is if 'e' is found
+cannot go out of bound or into 'W'
+cannot go to a spot already gone
+if there are multiple routes, save the other routes to go back on
+if no possible moves left, return false
+*/
