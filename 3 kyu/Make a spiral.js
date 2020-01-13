@@ -28,5 +28,23 @@ General rule-of-a-thumb is, that the snake made with '1' cannot touch to itself.
 
 //My solution
 var spiralize = function(size) {
-    // insert code here
+    let zeros = [];
+    for (let i = 0; i < size; i++) {
+        zeros.push([]);
+        for (let j = 0; j < size; j++)
+            zeros[i].push(0);
+    }
+    const spiralSnake = area => {
+
+    }
+    return spiralSnake(zeros);
 }
+console.log(spiralize(5));
+
+/*  
+    - Make box of zeros
+    - Start at [1][0] heading east, until collision
+    - 'collision' being when there are less than two zeroes ahead
+    - Turn left on collision
+    - return when turning is impossible
+*/
