@@ -26,25 +26,49 @@ Because of the edge-cases for tiny spirals, the size will be at least 5.
 
 General rule-of-a-thumb is, that the snake made with '1' cannot touch to itself.*/
 
-//My solution
-var spiralize = function(size) {
-    let zeros = [];
-    for (let i = 0; i < size; i++) {
-        zeros.push([]);
-        for (let j = 0; j < size; j++)
-            zeros[i].push(0);
-    }
-    const spiralSnake = area => {
-
-    }
-    return spiralSnake(zeros);
-}
-console.log(spiralize(5));
-
+//My first solution     
 /*  
     - Make box of zeros
     - Start at [1][0] heading east, until collision
     - 'collision' being when there are less than two zeroes ahead
-    - Turn left on collision
+    - Turn right on collision
     - return when turning is impossible
-*/
+*/                        
+var spiralize = function(size) {
+    let zeros = []
+    for (let i = 0; i < size; i++) {
+        zeros.push([]);
+        for (let j = 0; j < size; j++)
+            zeros[i].push(1);
+    }
+    const spiralSnake = area => {
+        let xy = [0, 1], turns = 0, canTurn = true;
+        const canMove = () => {
+            switch (turns%4) {
+                case 0: return xy[0] + 2 < area[0].length && area[xy[1]][xy[0]+1] != 0 && area[xy[1]][xy[0]+2] != 0;
+                case 1: return xy[1] + 2 < area.length && area[xy[1]+1][xy[0]] != 0 && area[xy[1]+2][xy[0]] != 0;
+                case 2: return xy[0] - 2 >= 0 && area[xy[1]][xy[0]-1] != 0 && area[xy[1]][xy[0]-2] != 0;
+                case 3: return xy[1] - 2 >= 0 && area[xy[1]-1][xy[0]] != 0 && area[xy[1]-2][xy[0]] != 0;
+            }
+        }
+        const move = (xy) => {
+            switch (turns%4) {
+                case 0: return [xy[0]+1, xy[1]];
+                case 1: return [xy[0], xy[1]+1];
+                case 2: return [xy[0]-1, xy[1]];
+                case 3: return [xy[0], xy[1]-1];
+            }
+        }
+        while (canTurn) {
+            area[xy[1]][xy[0]] = 0;
+            if (!canMove()) {
+                turns++;
+                if (!canMove()) canTurn = false;
+                else xy = move(xy);
+            }
+            else xy = move(xy);
+        }
+        return area;
+    }
+    return spiralSnake(zeros);
+}
